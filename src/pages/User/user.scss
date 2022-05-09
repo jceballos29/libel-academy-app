@@ -1,0 +1,25 @@
+/** @format */
+
+.student {
+  .nav__link {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+
+    &.active {
+      background: #6000de;
+      color: #ffffff;
+    }
+  }
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    color: #495057;
+    background-color: #f7f5ff;
+    border-color: #dee2e6 #dee2e6 #f7f5ff;
+  }
+}
