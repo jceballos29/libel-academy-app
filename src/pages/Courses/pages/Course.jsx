@@ -30,7 +30,7 @@ import {
   IoBookmark,
   IoCheckmarkCircle,
 } from 'react-icons/io5';
-// import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player';
 import moment from 'moment';
 import 'moment/locale/es';
 import { useDispatch, useSelector } from 'react-redux';
@@ -161,6 +161,14 @@ const Course = () => {
                     .filter((enroll) => enroll.status === 'completado').map(enroll => enroll.course._id).includes(currentCourse._id) && (
                       <span className='completed__course__badge me-2'>
                         COMPLETADO
+                      </span>
+                    )
+                  }
+                  {
+                    user && user.enrolledCourses
+                    .filter((enroll) => enroll.status === 'en proceso').map(enroll => enroll.course._id).includes(currentCourse._id) && (
+                      <span className='process__course__badge me-2'>
+                        EN PROCESO
                       </span>
                     )
                   }
@@ -367,14 +375,14 @@ const Course = () => {
                       <div
                         className='player-wrapper'
                         style={{ backgroundColor: 'black' }}>
-                        {/* <ReactPlayer
+                        <ReactPlayer
                           url={currentCourse?.trailer}
                           className='react-player'
                           playing={true}
                           width='100%'
                           height='100%'
                           controls={true}
-                        /> */}
+                        />
                       </div>
                     </Card>
                   </Col>

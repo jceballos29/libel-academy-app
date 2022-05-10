@@ -116,9 +116,9 @@ const Lessons = () => {
                             <p
                               className='text-muted text-end mt-2 mb-0'
                               style={{ fontSize: 12 }}>
-                              {(enrollCourse.completeLessons.length *
+                              {((enrollCourse.completeLessons.length *
                                 100) /
-                                enrollCourse.course.totalLessons}
+                                enrollCourse.course.totalLessons).toFixed(1)}
                               % Completado
                             </p>
                           </>

@@ -51,8 +51,8 @@ const DashboardCourseCard = ({enroll}) => {
           <p
             className='text-muted text-end mt-2 mb-0'
             style={{ fontSize: 12 }}>
-            {(enroll.completeLessons.length * 100) /
-              enroll.course.totalLessons}
+            {((enroll.completeLessons.length * 100) /
+              enroll.course.totalLessons).toFixed(1)}
             % Completado
           </p>
         </div>
@@ -66,7 +66,10 @@ const DashboardCourseCard = ({enroll}) => {
             }}>
             IR AL CURSO
           </Button>
-          <Button variant='secondary' size='sm'>
+          <Button variant='secondary' size='sm' 
+            onClick={() => {
+              navigate(`${path.courses.home}/${enroll.course.slug}/clases/${enroll.currentLesson}`);
+            }}>
             IR A LAS CLASES
           </Button>
         </div>

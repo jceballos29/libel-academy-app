@@ -94,7 +94,6 @@ export const dropCourse = createAsyncThunk('user/dropCourse', async (courseId, t
 
 export const completeLesson = createAsyncThunk('user/completeLesson', async (payload, thunkAPI) => {
   try {
-    console.log('slice: ', payload.courseId, payload.lessonId )
     const response = await userService.completeLesson(payload.courseId, payload.lessonId)
     return response
   } catch (error) {

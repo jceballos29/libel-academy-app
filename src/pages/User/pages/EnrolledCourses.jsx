@@ -3,11 +3,14 @@
 import React from 'react';
 import { Button, Card, Col, Row, Tab, Tabs } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { dropCourse } from '../../../features/user/userSlice';
+import path from '../../../routes/path';
 
 const EnrolledCourses = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className='student__enrolled mt-3 mt-md-0'>
@@ -92,17 +95,33 @@ const EnrolledCourses = () => {
                                 <p
                                   className='text-muted text-end mt-2 mb-0'
                                   style={{ fontSize: 12 }}>
-                                  {(enroll.completeLessons.length *
-                                    100) /
-                                    enroll.course.totalLessons}
+                                  {(
+                                    (enroll.completeLessons.length *
+                                      100) /
+                                    enroll.course.totalLessons
+                                  ).toFixed(1)}
                                   % Completado
                                 </p>
                               </div>
                               <hr />
                               <div className='d-flex flex-column justify-content-center'>
-                                <Button size='sm' variant='danger'
+                                <Button
+                                  size='sm'
+                                  className='mb-2'
                                   onClick={() => {
-                                    dispatch(dropCourse(enroll.course._id));
+                                    navigate(
+                                      `${path.courses.home}/${enroll.course.slug}`
+                                    );
+                                  }}>
+                                  IR AL CURSO
+                                </Button>
+                                <Button
+                                  size='sm'
+                                  variant='danger'
+                                  onClick={() => {
+                                    dispatch(
+                                      dropCourse(enroll.course._id)
+                                    );
                                   }}>
                                   ABANDONAR CURSO
                                 </Button>

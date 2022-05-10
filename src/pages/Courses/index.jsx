@@ -9,11 +9,49 @@ import { fetchCategories } from '../../features/categories/categoriesSlice';
 import CourseCard from './components/CourseCard';
 import FeaturedCard from './components/FeaturedCard';
 import CategoryCard from './components/CategoryCard';
+import Slider from 'react-slick';
+
+import Loading from '../../components/Loading';
+
+const settingsCategoriesSlider = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 
 const Courses = () => {
   const dispatch = useDispatch();
-  const { courses } = useSelector((state) => state.courses);
-  const { categories } = useSelector((state) => state.categories);
+  const { courses, loading: loadingCourses } = useSelector(
+    (state) => state.courses
+  );
+  const { categories, loading: loadingCategories } = useSelector(
+    (state) => state.categories
+  );
 
   useEffect(() => {
     handleTitlePage('Cursos');
@@ -58,18 +96,22 @@ const Courses = () => {
             </Col>
           </Row>
           <Row>
-            {courses
-              .filter((curso) => curso.featured === true)
-              .map((course) => (
-                <Col
-                  key={course._id}
-                  xs={12}
-                  md={6}
-                  xl={4}
-                  className='mb-3 mb-lg-0 px-md-2'>
-                  <FeaturedCard course={course} />
-                </Col>
-              ))}
+            {loadingCourses ? (
+              <Loading />
+            ) : (
+              courses
+                .filter((curso) => curso.featured === true)
+                .map((course) => (
+                  <Col
+                    key={course._id}
+                    xs={12}
+                    md={6}
+                    xl={4}
+                    className='mb-3 mb-lg-0 px-md-2'>
+                    <FeaturedCard course={course} />
+                  </Col>
+                ))
+            )}
           </Row>
         </Container>
       </section>
@@ -80,17 +122,36 @@ const Courses = () => {
               Categorías
             </h2>
           </Row>
-          <Row>
-            {categories.map((category) => (
-              <Col
-                md={6}
-                xl={3}
-                key={category._id}
-                className='mx-0 mb-3 mb-xl-0 px-0 px-md-2'>
+
+          {loadingCategories ? (
+            <Loading />
+          ) : categories.length > 4 ? (
+            <Row>
+              <Slider {...settingsCategoriesSlider}>
+                {categories.map((category) => (
+                  <Col
+                    md={6}
+                    xl={3}
+                    key={category._id}
+                    className='px-2'>
+                    <CategoryCard category={category} />
+                  </Col>
+                ))}
+              </Slider>
+            </Row>
+          ) : (
+            <Row>
+              {categories.map((category) => (
+                <Col
+                  md={6}
+                  xl={3}
+                  key={category._id}
+                  className='px-2'>
                   <CategoryCard category={category} />
                 </Col>
-            ))}
-          </Row>
+              ))}
+            </Row>
+          )}
         </Container>
       </section>
       <section className='courses__all pt-4 pb-5'>
@@ -101,11 +162,15 @@ const Courses = () => {
             </h2>
           </Row>
           <Row>
-            {courses.map((course) => (
-              <Col md={6} lg={4} xl={3} key={course._id}>
-                <CourseCard course={course} />
-              </Col>
-            ))}
+            {loadingCourses ? (
+              <Loading />
+            ) : (
+              courses.map((course) => (
+                <Col md={6} lg={4} xl={3} key={course._id}>
+                  <CourseCard course={course} />
+                </Col>
+              ))
+            )}
           </Row>
         </Container>
       </section>

@@ -238,6 +238,16 @@
     border-radius: 4px;
   }
 
+  .process__course__badge {
+    font-size: 18px;
+    font-weight: 700;
+    color: #956504;
+  background-color: #ffc107aa;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+
+
   .accordion-button {
     font-size: 1.25rem;
     font-weight: 500 !important;
@@ -272,8 +282,26 @@
   z-index: 10;
   font-size: 12px;
   font-weight: 700;
-  color: #1c5e11;
-  background-color: #20ac6baa;
+  color: #14410c;
+  background-color: #198754aa;
+  padding: 2px 5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  top: 10px;
+  right: 10px;
+  user-select: none;
+}
+
+.process_badge {
+  position: absolute;
+  z-index: 10;
+  font-size: 12px;
+  font-weight: 700;
+  color: #956504;
+  background-color: #ffc107aa;
   padding: 2px 5px;
   border-radius: 4px;
   -webkit-border-radius: 4px;

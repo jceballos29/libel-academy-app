@@ -50,6 +50,13 @@ const CourseCard = ({ course }) => {
             <div key={'completado'} className='completed_badge'>COMPLETADO</div>
           ) : null
         )}
+        {user && user.enrolledCourses
+        .filter((enroll) => enroll.status === 'en proceso')
+        .map((enroll) =>
+          enroll.course._id === course._id ? (
+            <div key={'proceso'} className='process_badge'>EN PROCESO</div>
+          ) : null
+        )}
       {user &&
         !user.enrolledCourses
           .map((enroll) => enroll.course._id)
