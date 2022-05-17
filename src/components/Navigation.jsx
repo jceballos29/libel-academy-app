@@ -34,10 +34,10 @@ const Navigation = () => {
       bg="dark"
       variant="dark"
       expand={"lg"}
-      className="navigation shadow-sm"
+      className="navigation shadow"
     >
       <Container>
-        <Navbar.Brand as={NavLink} to={path.home}>
+        <Navbar.Brand as={NavLink} to={path.home} >
           <Image src={brand} alt="Libel Academy" height={40} />
         </Navbar.Brand>
 

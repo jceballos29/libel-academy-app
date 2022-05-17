@@ -4,14 +4,9 @@
   top: 0;
   left: 0;
   z-index: 1000;
-
-  // .navigation_desktop {
-  //   display: none !important;
-
-  //   @media (min-width: 768px) {
-  //     display: flex !important;
-  //   }
-  // }
+  // -webkit-backdrop-filter: blur(28.7px);
+  //   backdrop-filter: blur(28.7px);
+  //   background-color: rgba(0,0,0,.7);
 
   .dropdown-menu {
     padding: 0;
@@ -177,4 +172,11 @@
   top: 10px;
   left: 10px;
   user-select: none;
+}
+
+.text-degrade {
+  -webkit-text-fill-color: transparent;
+    background: linear-gradient(90deg,#6000de 30%,#0ff 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
 }

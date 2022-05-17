@@ -67,6 +67,7 @@ const Settings = () => {
   });
 
   const onEditSubmit = async (data) => {
+    console.log('Settings Submit')
     const {
       files,
       firstName,

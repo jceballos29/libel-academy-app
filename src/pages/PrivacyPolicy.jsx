@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
     handleTitlePage('Política de Privacidad');
   }, []);
   return (
-    <section className="text-light">
+    <section className="text-dark">
       <Container className='py-4'>
         <h1 className="mb-4">
           POLÍTICA DE PRIVACIDAD, TRATAMIENTO Y PROTECCIÓN DE DATOS

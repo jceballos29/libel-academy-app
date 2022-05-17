@@ -1,8 +1,8 @@
 $primary: #6000de;
+$dark: #121212;
 
 @import "~bootstrap/scss/bootstrap";
 @import '~react-toastify/dist/ReactToastify.css';
-// @import '~video-react/styles/scss/video-react';
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
 
@@ -15,7 +15,8 @@ $primary: #6000de;
 body {
   // background-color: #212529;
   // background-color: #ced4da;
-  background-color: #f7f5ff;
+  background-color: #f7f5ff;  
+  // background-color: #000000;
   font-family: poppins, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

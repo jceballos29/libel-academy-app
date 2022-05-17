@@ -9,7 +9,7 @@ const TermsAndConditions = () => {
     handleTitlePage('Términos y Condiciones');
   }, []);
   return (
-    <section className='text-light'>
+    <section className='text-dark'>
       <Container className="py-4">
         <h1 className="mb-4">TÉRMINOS Y CONDICIONES</h1>
         <ol>
